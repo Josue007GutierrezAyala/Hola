@@ -81,7 +81,7 @@ namespace WPFDBParte2
                 {
                     if (cbFormaPago.Text != "Selecciona Genero")
                     {
-                        cmd.CommandText = "insert into Huesped(NumHuesped,Nombre,Genero,Telefono,Direccion) " +
+                        cmd.CommandText = "insert into Huesped(NumHuesped,Nombre,FormaPago,Telefono,Direccion) " +
                             "Values(" + txtNumHuesped.Text + ",'" + txtNombre.Text + "','" + cbFormaPago.Text + "'," + txtTelefono.Text + ",'" + txtDireccion.Text + "')";
                         cmd.ExecuteNonQuery();
                         MostrarDatos();
@@ -106,7 +106,7 @@ namespace WPFDBParte2
             }
             else
             {
-                MessageBox.Show("Favor de poner el ID de un Alumno.......");
+                MessageBox.Show("Favor de poner el Numero del cliente porfavor.......");
             }
         }
 
@@ -115,7 +115,7 @@ namespace WPFDBParte2
             DataRowView row = (DataRowView)gvDatos.SelectedItems[0];
             txtNumHuesped.Text = row["Id"].ToString();
             txtNombre.Text = row["Nombre"].ToString();
-            cbFormaPago.Text = row["Genero"].ToString();
+            cbFormaPago.Text = row["FormaPago"].ToString();
             txtDireccion.Text = row["Direccion"].ToString();
             txtNumHuesped.IsEnabled = false;
             btnNuevo.Content = "Actualizar";
@@ -130,7 +130,7 @@ namespace WPFDBParte2
                 if (con.State != ConnectionState.Open)
                     con.Open();
                 cmd.Connection = con;
-                cmd.CommandText = "delete from Progra where NumHuesped= " + row["NumHuesped"].ToString();//Es importante poner el where porque si no borraras toda la base de datos
+                cmd.CommandText = "delete from Huesped where NumHuesped= " + row["NumHuesped"].ToString();//Es importante poner el where porque si no borraras toda la base de datos
                 cmd.ExecuteNonQuery();
                 MostrarDatos();
                 MessageBox.Show("Alumno eliminado correctamente.....");
