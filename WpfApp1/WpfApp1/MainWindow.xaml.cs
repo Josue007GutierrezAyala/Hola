@@ -39,7 +39,7 @@ namespace WPFDBParte2
             if (con.State != ConnectionState.Open)
                 con.Open();
             cmd.Connection = con;
-            cmd.CommandText = "select * from Huesped";
+            cmd.CommandText = "select * from Huespedes";
             OleDbDataAdapter da = new OleDbDataAdapter(cmd);
             dt = new DataTable();
             da.Fill(dt);
@@ -63,8 +63,11 @@ namespace WPFDBParte2
             txtNumHuesped.Text = "";
             txtNombre.Text = "";
             cbFormaPago.SelectedIndex = 0;
+            cbZonasVIP.SelectedIndex = 0;
             txtNumTelef.Text = "";
             txtNumHabita.Text = "";
+            txtFechaIni.Text = "";
+            txtFechaSali.Text = "";
             btnNuevo.Content = "Nuevo";
             txtNumHuesped.IsEnabled = true;
         }
@@ -79,10 +82,10 @@ namespace WPFDBParte2
             {
                 if (txtNumHuesped.IsEnabled == true)
                 {
-                    if (cbFormaPago.Text != "Selecciona Genero")
+                    if (cbFormaPago.Text != "Selecciona Forma de Pago")
                     {
-                        cmd.CommandText = "insert into Huesped(NumHuesped,Nombre,FormaPago,NumTelef,NumHabita) " +
-                            "Values(" + txtNumHuesped.Text + ",'" + txtNombre.Text + "','" + cbFormaPago.Text + "'," + txtNumTelef.Text + ",'" + txtNumHabita.Text + "')";
+                        cmd.CommandText = "insert into Huespedes(NumHuesped,Nombre,NumDias,FormaPago,ZonasVIP,NumTelef,NumHabita,FechaIni,FechaSali) " +
+                            "Values(" + txtNumHuesped.Text + "','" + txtNombre.Text + "','" + txtNumDias.Text + "','" + cbFormaPago.Text + "','" + cbZonasVIP.Text + "', '" + txtNumTelef.Text + "','" + txtNumHabita.Text + "''" + txtFechaIni.Text + "''" + txtFechaSali.Text + "')";
                         cmd.ExecuteNonQuery();
                         MostrarDatos();
                         MessageBox.Show("El huesped ha sido agregado correctamente...");
@@ -96,11 +99,11 @@ namespace WPFDBParte2
                 }
                 else
                 {
-                    cmd.CommandText = "update Huesped set Nombre='" + txtNombre.Text + "',FormaPago='" + cbFormaPago.Text + "',NumTelef=" + txtNumTelef.Text
-                        + ",Direccion='" + txtNumHabita.Text + "' where NumHuesped=" + txtNumHuesped.Text;
+                    cmd.CommandText = "update Huespedes set Nombre='"+ txtNumHuesped.Text + "',NumHuesped='"+ txtNombre.Text + "',NumDias='" + txtNumDias.Text + "',FormaPago='" + cbFormaPago.Text + "',ZonasVIP='" + cbZonasVIP.Text + "',NumTelef=" + txtNumTelef.Text
+                        + ",NumHabita='" + txtNumHabita.Text  +"'FechaIni="+ txtFechaIni.Text + "'FechaSali=" + txtFechaSali.Text + "' where NumHuesped=" + txtNumHuesped.Text;
                     cmd.ExecuteNonQuery();
                     MostrarDatos();
-                    MessageBox.Show("Datos del huesped Actualizados...");
+                    MessageBox.Show("Datos del huespedes Actualizados...");
                     LimpiaTodo();
                 }
             }
@@ -115,11 +118,16 @@ namespace WPFDBParte2
             DataRowView row = (DataRowView)gvDatos.SelectedItems[0];
             txtNumHuesped.Text = row["NumHuesped"].ToString();
             txtNombre.Text = row["Nombre"].ToString();
+            txtNumDias.Text = row["NumDias"].ToString();
             cbFormaPago.Text = row["FormaPago"].ToString();
+            cbZonasVIP.Text = row["ZonasVIP"].ToString();
             txtNumTelef.Text = row["NumTelef"].ToString();
             txtNumHabita.Text = row["NumHabita"].ToString();
+            txtFechaIni.Text = row[" FechaIni"].ToString();
+            txtFechaSali.Text = row[" FechaSali"].ToString();
             txtNumHuesped.IsEnabled = false;
             btnNuevo.Content = "Actualizar";
+           
         }
 
         private void BtnEliminar_Click(object sender, RoutedEventArgs e)
@@ -131,7 +139,7 @@ namespace WPFDBParte2
                 if (con.State != ConnectionState.Open)
                     con.Open();
                 cmd.Connection = con;
-                cmd.CommandText = "delete from Huesped where NumHuesped= " + row["NumHuesped"].ToString();//Es importante poner el where porque si no borraras toda la base de datos
+                cmd.CommandText = "delete from Huespedes where NumHuesped= " + row["NumHuesped"].ToString();//Es importante poner el where porque si no borraras toda la base de datos
                 cmd.ExecuteNonQuery();
                 MostrarDatos();
                 MessageBox.Show("Alumno eliminado correctamente.....");

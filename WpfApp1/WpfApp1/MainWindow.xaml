@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFDBParte2"
         mc:Ignorable="d"
-        Title="Hotel Perlas Negras"  Height="778" Width="900" Background="Bisque" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="Hotel Perlas Negras"  Height="860.5" Width="900" Background="Bisque" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Window.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="FontSize" Value="20"/>
@@ -35,8 +35,8 @@
             </WrapPanel>
             <WrapPanel>
                 <TextBlock Text="Formas de pago:                      " Width="205"/>
-                <ComboBox FontSize="20" Name="cbFormaPago" Width="280" Margin="10" SelectionChanged="cbFormaPago_SelectionChanged" BorderBrush="#400000"  BorderThickness="2">
-                    <ComboBoxItem Content="Selecciona la forma de pago" Selector.IsSelected="True" />
+                <ComboBox FontSize="20" Name="cbFormaPago" Width="280" Margin="10"  BorderBrush="#400000"  BorderThickness="2">
+                    <ComboBoxItem Content="Selecciona la forma de pago"  Selector.IsSelected="True"/>
                     <ComboBoxItem Content="Credito" />
                     <ComboBoxItem Content="Devito" />
                     <ComboBoxItem Content="Cheke" />
@@ -45,8 +45,8 @@
             </WrapPanel>
             <WrapPanel>
                 <TextBlock Text="Zonas VIP:                      " Width="205"/>
-                <ComboBox FontSize="20" Name="cbZonasVIP" Width="419" Margin="10" SelectionChanged="cbZonasVIP_SelectionChanged">
-                    <ComboBoxItem Content="Selecciona si el usuario tendra acceso al VIP" Selector.IsSelected="True" />
+                <ComboBox FontSize="20" Name="cbZonasVIP" Width="419" Margin="10" >
+                    <ComboBoxItem Content="Selecciona si el usuario tendra acceso al VIP"  />
                     <ComboBoxItem Content="Si" />
                     <ComboBoxItem Content="En otra ocasion" />
                 </ComboBox>
@@ -61,11 +61,11 @@
             </WrapPanel>
             <WrapPanel>
                 <TextBlock Text="Fecha de ingreso :                        " Width="205"/>
-                <TextBox Name="txtFechaIni" Width="251"  BorderBrush="#400000"  Margin="5" BorderThickness="2"/>
+                <TextBox Name="txtFechaIni" Width="251"  BorderBrush="#400000"  Margin="5" BorderThickness="2"  TextWrapping="Wrap" AcceptsReturn="True"/>
             </WrapPanel>
             <WrapPanel>
                 <TextBlock Text="Fecha de egreso :                          " Width="205" />
-                <TextBox Name="txtFechaSali" Width="249"  BorderBrush="#400000"  Margin="5" BorderThickness="2"/>
+                <TextBox Name="txtFechaSali" Width="249"  BorderBrush="#400000"  Margin="5" BorderThickness="2" TextWrapping="Wrap" AcceptsReturn="True"/>
             </WrapPanel>
             <WrapPanel Margin="0" HorizontalAlignment="Center" Height="59">
                 <Button Name="btnNuevo" Content="Nuevo" FontSize="25" Width="120" Margin="5" Click="BtnNuevo_Click"  BorderBrush="#400000"   BorderThickness="2" />
