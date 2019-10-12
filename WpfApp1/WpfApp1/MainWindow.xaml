@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFDBParte2"
         mc:Ignorable="d"
-        Title="AlumnosDB"  Height="700" Width="900" Background="Bisque" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="Hotel Perlas Negras"  Height="700" Width="900" Background="Bisque" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Window.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="FontSize" Value="20"/>
@@ -35,7 +35,7 @@
             </WrapPanel>
             <WrapPanel>
                 <TextBlock Text="Formas de pago : "/>
-                <ComboBox FontSize="20" Name="cbGenero" Width="250" Margin="10">
+                <ComboBox FontSize="20" Name="cbFormaPago" Width="250" Margin="10">
                     <ComboBoxItem Content="Selecciona Genero" Selector.IsSelected="True" />
                     <ComboBoxItem Content="Hombre" />
                     <ComboBoxItem Content="Mujer" />

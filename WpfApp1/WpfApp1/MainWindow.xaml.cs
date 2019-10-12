@@ -62,7 +62,7 @@ namespace WPFDBParte2
         {
             txtNumHuesped.Text = "";
             txtNombre.Text = "";
-            cbGenero.SelectedIndex = 0;
+            cbFormaPago.SelectedIndex = 0;
             txtTelefono.Text = "";
             txtDireccion.Text = "";
             btnNuevo.Content = "Nuevo";
@@ -79,10 +79,10 @@ namespace WPFDBParte2
             {
                 if (txtNumHuesped.IsEnabled == true)
                 {
-                    if (cbGenero.Text != "Selecciona Genero")
+                    if (cbFormaPago.Text != "Selecciona Genero")
                     {
                         cmd.CommandText = "insert into Progra(NumHuesped,Nombre,Genero,Telefono,Direccion) " +
-                            "Values(" + txtNumHuesped.Text + ",'" + txtNombre.Text + "','" + cbGenero.Text + "'," + txtTelefono.Text + ",'" + txtDireccion.Text + "')";
+                            "Values(" + txtNumHuesped.Text + ",'" + txtNombre.Text + "','" + cbFormaPago.Text + "'," + txtTelefono.Text + ",'" + txtDireccion.Text + "')";
                         cmd.ExecuteNonQuery();
                         MostrarDatos();
                         MessageBox.Show("Alumno agregado correctamente...");
@@ -96,7 +96,7 @@ namespace WPFDBParte2
                 }
                 else
                 {
-                    cmd.CommandText = "update Progra set Nombre='" + txtNombre.Text + "',Genero='" + cbGenero.Text + "',Telefono=" + txtTelefono.Text
+                    cmd.CommandText = "update Progra set Nombre='" + txtNombre.Text + "',Genero='" + cbFormaPago.Text + "',Telefono=" + txtTelefono.Text
                         + ",Direccion='" + txtDireccion.Text + "' where NumHuesped=" + txtNumHuesped.Text;
                     cmd.ExecuteNonQuery();
                     MostrarDatos();
@@ -115,7 +115,7 @@ namespace WPFDBParte2
             DataRowView row = (DataRowView)gvDatos.SelectedItems[0];
             txtNumHuesped.Text = row["Id"].ToString();
             txtNombre.Text = row["Nombre"].ToString();
-            cbGenero.Text = row["Genero"].ToString();
+            cbFormaPago.Text = row["Genero"].ToString();
             txtDireccion.Text = row["Direccion"].ToString();
             txtNumHuesped.IsEnabled = false;
             btnNuevo.Content = "Actualizar";
@@ -130,7 +130,7 @@ namespace WPFDBParte2
                 if (con.State != ConnectionState.Open)
                     con.Open();
                 cmd.Connection = con;
-                cmd.CommandText = "delete from Progra where Id= " + row["Id"].ToString();//Es importante poner el where porque si no borraras toda la base de datos
+                cmd.CommandText = "delete from Progra where NumHuesped= " + row["NumHuesped"].ToString();//Es importante poner el where porque si no borraras toda la base de datos
                 cmd.ExecuteNonQuery();
                 MostrarDatos();
                 MessageBox.Show("Alumno eliminado correctamente.....");
