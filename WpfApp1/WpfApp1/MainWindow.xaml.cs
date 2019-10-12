@@ -81,22 +81,22 @@ namespace WPFDBParte2
                 {
                     if (cbFormaPago.Text != "Selecciona Genero")
                     {
-                        cmd.CommandText = "insert into Progra(NumHuesped,Nombre,Genero,Telefono,Direccion) " +
+                        cmd.CommandText = "insert into Huesped(NumHuesped,Nombre,Genero,Telefono,Direccion) " +
                             "Values(" + txtNumHuesped.Text + ",'" + txtNombre.Text + "','" + cbFormaPago.Text + "'," + txtTelefono.Text + ",'" + txtDireccion.Text + "')";
                         cmd.ExecuteNonQuery();
                         MostrarDatos();
-                        MessageBox.Show("Alumno agregado correctamente...");
+                        MessageBox.Show("El huesped ha sido agregado correctamente...");
                         LimpiaTodo();
 
                     }
                     else
                     {
-                        MessageBox.Show("Favor de seleccionar el genero....");
+                        MessageBox.Show("Favor de seleccionar la forma de pago....");
                     }
                 }
                 else
                 {
-                    cmd.CommandText = "update Progra set Nombre='" + txtNombre.Text + "',Genero='" + cbFormaPago.Text + "',Telefono=" + txtTelefono.Text
+                    cmd.CommandText = "update Huesped set Nombre='" + txtNombre.Text + "',FormaPago='" + cbFormaPago.Text + "',Telefono=" + txtTelefono.Text
                         + ",Direccion='" + txtDireccion.Text + "' where NumHuesped=" + txtNumHuesped.Text;
                     cmd.ExecuteNonQuery();
                     MostrarDatos();
