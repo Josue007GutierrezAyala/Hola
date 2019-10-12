@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFDBParte2"
         mc:Ignorable="d"
-        Title="Hotel Perlas Negras"  Height="700" Width="900" Background="Bisque" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="Hotel Perlas Negras"  Height="778" Width="900" Background="Bisque" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Window.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="FontSize" Value="20"/>
@@ -20,41 +20,59 @@
     </Window.Resources>
     <DockPanel Name="dockMain" VerticalAlignment="top" HorizontalAlignment="Center" LastChildFill="False">
         <StackPanel>
-            <Label Content="AlumnosDB" HorizontalAlignment="Center" FontSize="36" FontWeight="Bold"></Label>
+            <Label Content="Reservaciones" HorizontalAlignment="Center" FontSize="36" FontWeight="Bold"></Label>
             <WrapPanel>
                 <TextBlock Text="Numero del Huesped: " Width="208"/>
-                <TextBox Name="txtNumHuesped" />
+                <TextBox Name="txtNumHuesped"  BorderBrush="#400000"  Margin="5" BorderThickness="2"/>
             </WrapPanel>
             <WrapPanel>
-                <TextBlock><Run Text="Nombre : "/><Run Text="                  "/></TextBlock>
-                <TextBox x:Name="txtNombre" Width="228" />
+                <TextBlock Width="208"><Run Text="Nombre:                       "/><Run Text="                           "/></TextBlock>
+                <TextBox x:Name="txtNombre" Width="252" BorderBrush="#400000"  Margin="5" BorderThickness="2" />
             </WrapPanel>
             <WrapPanel>
-                <TextBlock Text="Numero de Dias : "/>
-                <TextBox Name="txtNumDias" />
+                <TextBlock Text="Numero de Dias:                " Width="206"/>
+                <TextBox Name="txtNumDias" Width="254"  BorderBrush="#400000"  Margin="5" BorderThickness="2"/>
             </WrapPanel>
             <WrapPanel>
-                <TextBlock Text="Formas de pago : "/>
-                <ComboBox FontSize="20" Name="cbFormaPago" Width="250" Margin="10">
-                    <ComboBoxItem Content="Selecciona Genero" Selector.IsSelected="True" />
-                    <ComboBoxItem Content="Hombre" />
-                    <ComboBoxItem Content="Mujer" />
+                <TextBlock Text="Formas de pago:                      " Width="205"/>
+                <ComboBox FontSize="20" Name="cbFormaPago" Width="280" Margin="10" SelectionChanged="cbFormaPago_SelectionChanged" BorderBrush="#400000"  BorderThickness="2">
+                    <ComboBoxItem Content="Selecciona la forma de pago" Selector.IsSelected="True" />
+                    <ComboBoxItem Content="Credito" />
+                    <ComboBoxItem Content="Devito" />
+                    <ComboBoxItem Content="Cheke" />
+                    <ComboBoxItem Content="Efectivo" />
                 </ComboBox>
             </WrapPanel>
             <WrapPanel>
-                <TextBlock Text="Telefono : "/>
-                <TextBox Name="txtTelefono" />
+                <TextBlock Text="Zonas VIP:                      " Width="205"/>
+                <ComboBox FontSize="20" Name="cbZonasVIP" Width="419" Margin="10" SelectionChanged="cbZonasVIP_SelectionChanged">
+                    <ComboBoxItem Content="Selecciona si el usuario tendra acceso al VIP" Selector.IsSelected="True" />
+                    <ComboBoxItem Content="Si" />
+                    <ComboBoxItem Content="En otra ocasion" />
+                </ComboBox>
             </WrapPanel>
             <WrapPanel>
-                <TextBlock Text="Dirección : "/>
-                <TextBox Name="txtDireccion" TextWrapping="Wrap" AcceptsReturn="True" Height="75" />
+                <TextBlock Text="Numero Telefonico:                        " Width="205"/>
+                <TextBox Name="txtNumTelef" Width="253" BorderBrush="#400000"  Margin="5" BorderThickness="2"/>
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="Numero de Habitacion :                   " Width="205"/>
+                <TextBox Name="txtNumHabita" Width="251"  BorderBrush="#400000"  Margin="5" BorderThickness="2"/>
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="Fecha de ingreso :                        " Width="205"/>
+                <TextBox Name="txtFechaIni" Width="251"  BorderBrush="#400000"  Margin="5" BorderThickness="2"/>
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="Fecha de egreso :                          " Width="205" />
+                <TextBox Name="txtFechaSali" Width="249"  BorderBrush="#400000"  Margin="5" BorderThickness="2"/>
             </WrapPanel>
             <WrapPanel Margin="0" HorizontalAlignment="Center" Height="59">
-                <Button Name="btnNuevo" Content="Nuevo" FontSize="25" Width="120" Margin="5" Click="BtnNuevo_Click" />
-                <Button Name="btnEditar" Content="Editar" FontSize="25" Width="120" Margin="5" Click="BtnEditar_Click" />
-                <Button Name="btnEliminar" Content="Eliminar" FontSize="25" Width="120" Margin="5" Click="BtnEliminar_Click" />
-                <Button Name="btnCancelar" Content="Cancelar" FontSize="25" Width="120" Margin="5" Click="BtnCancelar_Click" />
-                <Button Name="btnSalir" Content="Salir" FontSize="25" Width="120" Margin="5" Background="#400000" Foreground="Bisque" Click="BtnSalir_Click" />
+                <Button Name="btnNuevo" Content="Nuevo" FontSize="25" Width="120" Margin="5" Click="BtnNuevo_Click"  BorderBrush="#400000"   BorderThickness="2" />
+                <Button Name="btnEditar" Content="Editar" FontSize="25" Width="120" Margin="5" Click="BtnEditar_Click"  BorderBrush="#400000"   BorderThickness="2"/>
+                <Button Name="btnEliminar" Content="Eliminar" FontSize="25" Width="120" Margin="5" Click="BtnEliminar_Click"  BorderBrush="#400000"   BorderThickness="2" />
+                <Button Name="btnCancelar" Content="Cancelar" FontSize="25" Width="120" Margin="5" Click="BtnCancelar_Click"  BorderBrush="#400000"  BorderThickness="2"/>
+                <Button Name="btnSalir" Content="Salir" FontSize="25" Width="120" Margin="5" Background="#400000" Foreground="Bisque" Click="BtnSalir_Click"  BorderBrush="#400000"   BorderThickness="2" />
             </WrapPanel>
             <Label Content="No encontre Registros." Name="lbContenido" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold" Foreground="#FFE10000"></Label>
             <WrapPanel Margin="20" HorizontalAlignment="Center">
@@ -62,4 +80,6 @@
             </WrapPanel>
         </StackPanel>
     </DockPanel>
+    
+ 
 </Window>

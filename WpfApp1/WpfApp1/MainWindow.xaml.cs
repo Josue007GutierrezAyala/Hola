@@ -63,8 +63,8 @@ namespace WPFDBParte2
             txtNumHuesped.Text = "";
             txtNombre.Text = "";
             cbFormaPago.SelectedIndex = 0;
-            txtTelefono.Text = "";
-            txtDireccion.Text = "";
+            txtNumTelef.Text = "";
+            txtNumHabita.Text = "";
             btnNuevo.Content = "Nuevo";
             txtNumHuesped.IsEnabled = true;
         }
@@ -81,8 +81,8 @@ namespace WPFDBParte2
                 {
                     if (cbFormaPago.Text != "Selecciona Genero")
                     {
-                        cmd.CommandText = "insert into Huesped(NumHuesped,Nombre,FormaPago,Telefono,Direccion) " +
-                            "Values(" + txtNumHuesped.Text + ",'" + txtNombre.Text + "','" + cbFormaPago.Text + "'," + txtTelefono.Text + ",'" + txtDireccion.Text + "')";
+                        cmd.CommandText = "insert into Huesped(NumHuesped,Nombre,FormaPago,NumTelef,NumHabita) " +
+                            "Values(" + txtNumHuesped.Text + ",'" + txtNombre.Text + "','" + cbFormaPago.Text + "'," + txtNumTelef.Text + ",'" + txtNumHabita.Text + "')";
                         cmd.ExecuteNonQuery();
                         MostrarDatos();
                         MessageBox.Show("El huesped ha sido agregado correctamente...");
@@ -96,11 +96,11 @@ namespace WPFDBParte2
                 }
                 else
                 {
-                    cmd.CommandText = "update Huesped set Nombre='" + txtNombre.Text + "',FormaPago='" + cbFormaPago.Text + "',Telefono=" + txtTelefono.Text
-                        + ",Direccion='" + txtDireccion.Text + "' where NumHuesped=" + txtNumHuesped.Text;
+                    cmd.CommandText = "update Huesped set Nombre='" + txtNombre.Text + "',FormaPago='" + cbFormaPago.Text + "',NumTelef=" + txtNumTelef.Text
+                        + ",Direccion='" + txtNumHabita.Text + "' where NumHuesped=" + txtNumHuesped.Text;
                     cmd.ExecuteNonQuery();
                     MostrarDatos();
-                    MessageBox.Show("Datos del alumno Actualizados...");
+                    MessageBox.Show("Datos del huesped Actualizados...");
                     LimpiaTodo();
                 }
             }
@@ -113,10 +113,11 @@ namespace WPFDBParte2
         private void BtnEditar_Click(object sender, RoutedEventArgs e)
         {
             DataRowView row = (DataRowView)gvDatos.SelectedItems[0];
-            txtNumHuesped.Text = row["Id"].ToString();
+            txtNumHuesped.Text = row["NumHuesped"].ToString();
             txtNombre.Text = row["Nombre"].ToString();
             cbFormaPago.Text = row["FormaPago"].ToString();
-            txtDireccion.Text = row["Direccion"].ToString();
+            txtNumTelef.Text = row["NumTelef"].ToString();
+            txtNumHabita.Text = row["NumHabita"].ToString();
             txtNumHuesped.IsEnabled = false;
             btnNuevo.Content = "Actualizar";
         }
@@ -147,5 +148,12 @@ namespace WPFDBParte2
         {
             Application.Current.Shutdown();
         }
+
+        private void CbFormaPago_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+         // <TextBlock Text = "Numero de Habitacion :                   " Width="205"/>            Sirven para dar anchura a un textBox
+        //  <TextBox Name = "txtNumHabita" TextWrapping="Wrap" AcceptsReturn="True" Height="75" />
     }
 }
