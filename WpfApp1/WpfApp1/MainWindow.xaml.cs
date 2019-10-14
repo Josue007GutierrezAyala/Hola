@@ -101,8 +101,8 @@ namespace WPFDBParte2
                     }
                     else
                     {
-                        cmd.CommandText = "update Huespedes set Nombre='" + txtNumHuesped.Text + "',NumHuesped='" + txtNombre.Text + "',NumDias='" + txtNumDias.Text + "',FormaPago='" + cbFormaPago.Text + "',ZonasVIP='" + cbZonasVIP.Text + "',NumTelef=" + txtNumTelef.Text
-                            + ",NumHabita='" + txtNumHabita.Text + "'FechaIni=" + txtFechaIni.Text + "'FechaSali=" + txtFechaSali.Text + "' where NumHuesped=" + txtNumHuesped.Text;
+                        cmd.CommandText = "update Huespedes set Nombre='" + txtNombre.Text +  "',NumDias='" + txtNumDias.Text + "',FormaPago='" + cbFormaPago.Text + "',ZonasVIP='" + cbZonasVIP.Text + "',NumTelef='" + txtNumTelef.Text
+                            + ",NumHabita='" + txtNumHabita.Text + "'FechaIni='" + txtFechaIni.Text + "'FechaSali='" + txtFechaSali.Text + "' where NumHuesped='" + txtNumHuesped.Text;
                         cmd.ExecuteNonQuery();
                         MostrarDatos();
                         MessageBox.Show("Datos del huespedes Actualizados...");
@@ -130,8 +130,8 @@ namespace WPFDBParte2
             cbZonasVIP.Text = row["ZonasVIP"].ToString();
             txtNumTelef.Text = row["NumTelef"].ToString();
             txtNumHabita.Text = row["NumHabita"].ToString();
-            txtFechaIni.Text = row[" FechaIni"].ToString();
-            txtFechaSali.Text = row[" FechaSali"].ToString();
+            txtFechaIni.Text = row["FechaIni"].ToString();
+            txtFechaSali.Text = row["FechaSali"].ToString();
             txtNumHuesped.IsEnabled = false;
             btnNuevo.Content = "Actualizar";
            
