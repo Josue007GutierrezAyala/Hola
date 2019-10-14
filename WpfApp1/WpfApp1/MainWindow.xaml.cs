@@ -73,43 +73,50 @@ namespace WPFDBParte2
         }
         private void BtnNuevo_Click(object sender, RoutedEventArgs e)
         {
-            OleDbCommand cmd = new OleDbCommand();
-            if (con.State != ConnectionState.Open)
-                con.Open();
-            cmd.Connection = con;
-
-            if (txtNumHuesped.Text != "")
+            try
             {
-                if (txtNumHuesped.IsEnabled == true)
-                {
-                    if (cbFormaPago.Text != "Selecciona Forma de Pago")
-                    {
-                        cmd.CommandText = "insert into Huespedes(NumHuesped,Nombre,NumDias,FormaPago,ZonasVIP,NumTelef,NumHabita,FechaIni,FechaSali) " +
-                            "Values(" + txtNumHuesped.Text + "','" + txtNombre.Text + "','" + txtNumDias.Text + "','" + cbFormaPago.Text + "','" + cbZonasVIP.Text + "', '" + txtNumTelef.Text + "','" + txtNumHabita.Text + "''" + txtFechaIni.Text + "''" + txtFechaSali.Text + "')";
-                        cmd.ExecuteNonQuery();
-                        MostrarDatos();
-                        MessageBox.Show("El huesped ha sido agregado correctamente...");
-                        LimpiaTodo();
+                OleDbCommand cmd = new OleDbCommand();
+                if (con.State != ConnectionState.Open)
+                    con.Open();
+                cmd.Connection = con;
 
+                if (txtNumHuesped.Text != "")
+                {
+                    if (txtNumHuesped.IsEnabled == true)
+                    {
+                        if (cbFormaPago.Text != "Selecciona Forma de Pago")
+                        {
+                            cmd.CommandText = "insert into Huespedes(NumHuesped,Nombre,NumDias,FormaPago,ZonasVIP,NumTelef,NumHabita,FechaIni,FechaSali) " +
+                                "Values('" + txtNumHuesped.Text + "','" + txtNombre.Text + "','" + txtNumDias.Text + "','" + cbFormaPago.Text + "','" + cbZonasVIP.Text + "','" + txtNumTelef.Text + "','" + txtNumHabita.Text + "','" + txtFechaIni.Text + "','" + txtFechaSali.Text + "')";
+                            cmd.ExecuteNonQuery();
+                            MostrarDatos();
+                            MessageBox.Show("El huesped ha sido agregado correctamente...");
+                            LimpiaTodo();
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Favor de seleccionar la forma de pago...."); 
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Favor de seleccionar la forma de pago....");
+                        cmd.CommandText = "update Huespedes set Nombre='" + txtNumHuesped.Text + "',NumHuesped='" + txtNombre.Text + "',NumDias='" + txtNumDias.Text + "',FormaPago='" + cbFormaPago.Text + "',ZonasVIP='" + cbZonasVIP.Text + "',NumTelef=" + txtNumTelef.Text
+                            + ",NumHabita='" + txtNumHabita.Text + "'FechaIni=" + txtFechaIni.Text + "'FechaSali=" + txtFechaSali.Text + "' where NumHuesped=" + txtNumHuesped.Text;
+                        cmd.ExecuteNonQuery();
+                        MostrarDatos();
+                        MessageBox.Show("Datos del huespedes Actualizados...");
+                        LimpiaTodo();
                     }
                 }
                 else
                 {
-                    cmd.CommandText = "update Huespedes set Nombre='"+ txtNumHuesped.Text + "',NumHuesped='"+ txtNombre.Text + "',NumDias='" + txtNumDias.Text + "',FormaPago='" + cbFormaPago.Text + "',ZonasVIP='" + cbZonasVIP.Text + "',NumTelef=" + txtNumTelef.Text
-                        + ",NumHabita='" + txtNumHabita.Text  +"'FechaIni="+ txtFechaIni.Text + "'FechaSali=" + txtFechaSali.Text + "' where NumHuesped=" + txtNumHuesped.Text;
-                    cmd.ExecuteNonQuery();
-                    MostrarDatos();
-                    MessageBox.Show("Datos del huespedes Actualizados...");
-                    LimpiaTodo();
+                    MessageBox.Show("Favor de poner el Numero del cliente porfavor.......");
                 }
             }
-            else
+            catch (Exception x)
             {
-                MessageBox.Show("Favor de poner el Numero del cliente porfavor.......");
+                MessageBox.Show("Error..." + x.Source);
             }
         }
 
