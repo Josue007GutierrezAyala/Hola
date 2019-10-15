@@ -100,9 +100,9 @@ namespace WPFDBParte2
                         }
                     }
                     else
-                    {
+                    { //editar datos
                         cmd.CommandText = "update Huespedes set Nombre='" + txtNombre.Text +  "',NumDias='" + txtNumDias.Text + "',FormaPago='" + cbFormaPago.Text + "',ZonasVIP='" + cbZonasVIP.Text + "',NumTelef='" + txtNumTelef.Text
-                            + ",NumHabita='" + txtNumHabita.Text + "'FechaIni='" + txtFechaIni.Text + "'FechaSali='" + txtFechaSali.Text + "' where NumHuesped='" + txtNumHuesped.Text;
+                            + "',NumHabita='" + txtNumHabita.Text + "',FechaIni='" + txtFechaIni.Text + "',FechaSali='" + txtFechaSali.Text + "'where NumHuesped=" + txtNumHuesped.Text;
                         cmd.ExecuteNonQuery();
                         MostrarDatos();
                         MessageBox.Show("Datos del huespedes Actualizados...");
@@ -164,11 +164,10 @@ namespace WPFDBParte2
             Application.Current.Shutdown();
         }
 
-        private void CbFormaPago_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+        
 
-        }
-         // <TextBlock Text = "Numero de Habitacion :                   " Width="205"/>            Sirven para dar anchura a un textBox
+       
+        // <TextBlock Text = "Numero de Habitacion :                   " Width="205"/>            Sirven para dar anchura a un textBox
         //  <TextBox Name = "txtNumHabita" TextWrapping="Wrap" AcceptsReturn="True" Height="75" />
     }
 }
