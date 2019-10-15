@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFDBParte2"
         mc:Ignorable="d"
-        Title="Hotel Perlas Negras"  Height="860.5" Width="900" Background="Bisque" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="Hotel Perlas Negras"  Height="860.5" Width="900" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowState="Maximized">
     <Window.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="FontSize" Value="20"/>
@@ -18,6 +18,9 @@
             <Setter Property="Margin" Value="10"/>
         </Style>
     </Window.Resources>
+    <Window.Background>
+        <ImageBrush ImageSource="Imagen/hoteles.jpg"/>
+    </Window.Background>
     <DockPanel Name="dockMain" VerticalAlignment="top" HorizontalAlignment="Center" LastChildFill="False">
         <StackPanel>
             <Label Content="Reservaciones" HorizontalAlignment="Center" FontSize="36" FontWeight="Bold"></Label>
@@ -80,6 +83,6 @@
             </WrapPanel>
         </StackPanel>
     </DockPanel>
-    
- 
+
+
 </Window>
