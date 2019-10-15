@@ -33,7 +33,7 @@ namespace WPFDBParte2
             MostrarDatos();
         }
         //Mostramos los registros de la tabla
-        private void MostrarDatos()
+        private void MostrarDatos() 
         {
             OleDbCommand cmd = new OleDbCommand();
             if (con.State != ConnectionState.Open)
