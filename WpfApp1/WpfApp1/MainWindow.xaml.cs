@@ -164,9 +164,14 @@ namespace WPFDBParte2
             Application.Current.Shutdown();
         }
 
-        
+        private void TxtNumTelef_TextChanged(object sender, TextChangedEventArgs e)
+        {
 
-       
+        }
+
+
+
+
         // <TextBlock Text = "Numero de Habitacion :                   " Width="205"/>            Sirven para dar anchura a un textBox
         //  <TextBox Name = "txtNumHabita" TextWrapping="Wrap" AcceptsReturn="True" Height="75" />
     }

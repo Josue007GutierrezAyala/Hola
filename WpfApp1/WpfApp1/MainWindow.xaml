@@ -56,7 +56,7 @@
             </WrapPanel>
             <WrapPanel>
                 <TextBlock Text="Numero Telefonico:                        " Width="205"/>
-                <TextBox Name="txtNumTelef" Width="253" BorderBrush="#400000"  Margin="5" BorderThickness="2"/>
+                <TextBox Name="txtNumTelef" Width="253" BorderBrush="#400000"  Margin="5" BorderThickness="2" TextChanged="TxtNumTelef_TextChanged"/>
             </WrapPanel>
             <WrapPanel>
                 <TextBlock Text="Numero de Habitacion :                   " Width="205"/>
